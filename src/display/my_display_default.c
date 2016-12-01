@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 22:29:12 2016 Antonin Rapini
-** Last update Wed Nov 30 16:05:28 2016 Antonin Rapini
+** Last update Thu Dec  1 22:45:16 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -14,23 +14,17 @@
 #include "my_options.h"
 #include "my_fileinfos.h"
 #include "utils.h"
+#include <time.h>
 
 void	my_display_default(t_options *options, t_list *list)
 {
   while (list != NULL)
     {
-      if (options->show_hidden)
+      if (options->show_hidden || list->fileinfos->name[0] != '.')
 	{
 	  my_putstr(list->fileinfos->name);
-	  my_putstr(" ");
-	}
-      else if (list->fileinfos->name[0] != '.')
-	{
-	  my_putstr(list->fileinfos->name);
-	  my_putstr(" ");
+	  my_putchar('\n');
 	}
       list = list->next;
-      if (options->show_filetype)
-	return ;
     }
 }

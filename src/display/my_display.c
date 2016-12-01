@@ -5,12 +5,11 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Nov 30 16:33:23 2016 Antonin Rapini
-** Last update Wed Nov 30 16:48:12 2016 Antonin Rapini
+** Last update Thu Dec  1 22:12:02 2016 Antonin Rapini
 */
 
 #include "my_options.h"
 #include "sources.h"
-
 void		my_display(t_options *options, int i, int ac, char **av)
 {
   t_list	*files;

@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 10:10:53 2016 Antonin Rapini
-** Last update Tue Nov 29 23:56:42 2016 Antonin Rapini
+** Last update Thu Dec  1 22:22:47 2016 Antonin Rapini
 */
 
 #include "my_fileinfos.h"
@@ -13,5 +13,5 @@
 
 int	my_atimecmp(t_fileinfos *file1, t_fileinfos *file2)
 {
-  return (file1->stat_data->st_atime > file2->stat_data->st_atime);
+  return (file1->stat_data->st_atime < file2->stat_data->st_atime);
 }

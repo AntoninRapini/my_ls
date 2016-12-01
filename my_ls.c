@@ -5,12 +5,11 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Nov 28 16:54:07 2016 Antonin Rapini
-** Last update Wed Nov 30 16:45:37 2016 Antonin Rapini
+** Last update Thu Dec  1 22:08:39 2016 Antonin Rapini
 */
 
 #include "sources.h"
 #include "my_options.h"
-#include "my_list.h"
 
 int		main(int ac, char **av)
 {

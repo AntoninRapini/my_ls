@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 11:05:37 2016 Antonin Rapini
-** Last update Wed Nov 30 11:57:43 2016 Antonin Rapini
+** Last update Thu Dec  1 23:35:48 2016 Antonin Rapini
 */
 
 #include "my_options.h"
@@ -33,7 +33,10 @@ void check_bonus_options(t_options *options, char flag)
   else if (flag == 'F')
     options->show_filetype = 1;
   else if (flag == 'g')
-    options->hide_owner = 1;
+    {
+      options->hide_owner = 1;
+      options->my_display = &my_display_line;
+    }
   else if (flag == 'f')
     {
       options->my_compfnc = &my_nocmp;
