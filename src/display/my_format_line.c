@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Dec  1 17:30:50 2016 Antonin Rapini
-** Last update Fri Dec  2 15:20:48 2016 Antonin Rapini
+** Last update Fri Dec  2 16:28:06 2016 Antonin Rapini
 */
 
 #include "my_options.h"
@@ -68,27 +68,16 @@ char	*my_format_time(t_options *options, t_fileinfos *infos)
   char	*nonformatted;
   char	*formatted;
   int	i;
-  int	j;
-  int	arr[3][2];
-  int	k;
 
-  arr[0][0] = 4;
-  arr[0][1] = 8;
-  arr[1][0] = 9;
-  arr[1][1] = 10;
-  arr[2][0] = 11;
-  arr[2][1] = 16;
-  k = 0;
   i = 0;
   nonformatted = options->show_accesstime ? ctime(&(infos->stat_data->st_atime))
     : ctime(&(infos->stat_data->st_mtime));
   formatted = malloc(sizeof(char) * 13);
-  while (i++ < 3)
+  formatted[12] = '\0';
+  while (i < 12)
     {
-      j = arr[i - 1][0];
-      while (j++ < arr[i - 1][1])
-	formatted[k++] = nonformatted[j - 1];
-      formatted[k++] = i < 3 ? ' ' : '\0';
+      formatted[i] = nonformatted[i + 4];
+      i++;
     }
   return (formatted);
 }

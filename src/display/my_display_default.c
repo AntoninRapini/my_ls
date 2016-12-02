@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 22:29:12 2016 Antonin Rapini
-** Last update Fri Dec  2 15:20:49 2016 Antonin Rapini
+** Last update Fri Dec  2 16:32:08 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -28,7 +28,8 @@ void	my_display_default(t_options *options, t_list *list)
 	  (list->fileinfos->name[0] != '.' || options->show_self))
 	{
 	  my_putstr(list->fileinfos->name);
-	  my_putchar(list->fileinfos->typespecifier);
+	  if (list->fileinfos->typespecifier != '\0')
+	    my_putchar(list->fileinfos->typespecifier);
 	  my_putchar('\n');
 	}
       list = list->next;
