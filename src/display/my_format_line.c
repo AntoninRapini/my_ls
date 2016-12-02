@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Dec  1 17:30:50 2016 Antonin Rapini
-** Last update Thu Dec  1 23:32:03 2016 Antonin Rapini
+** Last update Fri Dec  2 10:38:05 2016 Antonin Rapini
 */
 
 #include "my_options.h"
@@ -52,6 +52,13 @@ char	*my_format_rights(mode_t st_mode)
   rights[7] = st_mode & S_IROTH ? 'r' : '-';
   rights[8] = st_mode & S_IWOTH ? 'w' : '-';
   rights[9] = st_mode & S_IXOTH ? 'x' : '-';
+  if (st_mode & S_ISVTX)
+    {
+      if (rights[9] == 'x')
+	rights[9] = 't';
+      else
+	rights[9] = 'T';
+    }
   rights[10] = '\0';
   return (rights);
 }
@@ -99,7 +106,7 @@ char	*my_format_line(t_options *options, t_fileinfos *infos)
   size = my_int_tostr(infos->stat_data->st_size);
   rights = my_format_rights(infos->stat_data->st_mode);
   line = my_nstrcat(15, rights, " ", links, " ", infos->owner,
-		    " ", infos->group, " ", size, " ", time, " ",infos->name,
+		    " ", infos->group, " ", size, "\t", time, " ",infos->name,
 		    infos->links_to != NULL ? " -> " : "\0",
 		    infos->links_to != NULL ? infos->links_to : "\0");
   return (line);

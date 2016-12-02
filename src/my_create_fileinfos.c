@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 17:15:17 2016 Antonin Rapini
-** Last update Thu Dec  1 23:29:33 2016 Antonin Rapini
+** Last update Fri Dec  2 10:36:02 2016 Antonin Rapini
 */
 
 #include <sys/types.h>
@@ -38,6 +38,7 @@ char	*get_linkname(char *path, struct stat *sb)
     }
   return (NULL);
 }
+
 struct stat	*my_get_stat
 (char *path, char *filename, int is_dir, t_fileinfos *fileinfos)
 {
@@ -73,7 +74,7 @@ t_fileinfos	*my_create_fileinfos
   if ((fileinfos = malloc(sizeof(t_fileinfos))) == NULL)
     exit(84);
   if ((sb = my_get_stat(path, filename, is_dir, fileinfos)) == NULL)
-    return (NULL);
+    exit(84);
   if ((pwd = getpwuid(sb->st_uid)) == NULL)
     exit(84);
   if ((grp = getgrgid(sb->st_gid)) == NULL)

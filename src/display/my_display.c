@@ -5,11 +5,13 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Nov 30 16:33:23 2016 Antonin Rapini
-** Last update Thu Dec  1 22:12:02 2016 Antonin Rapini
+** Last update Fri Dec  2 10:33:08 2016 Antonin Rapini
 */
 
 #include "my_options.h"
 #include "sources.h"
+#include <stdlib.h>
+
 void		my_display(t_options *options, int i, int ac, char **av)
 {
   t_list	*files;
@@ -18,14 +20,18 @@ void		my_display(t_options *options, int i, int ac, char **av)
     {
       while (i < ac)
 	{
-	  files = my_create_list(options, av[i]);
-	  options->my_display(options, files);
+	  if ((files = my_create_list(options, av[i])) != NULL)
+	  {
+	    options->my_display(options, files);
+	  }
 	  i++;
 	}
     }
   else
     {
-      files = my_create_list(options, ".");
-      options->my_display(options, files);
+      if ((files = my_create_list(options, ".")) != NULL)
+	{
+	  options->my_display(options, files);
+	}
     }
 }

@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 17:15:17 2016 Antonin Rapini
-** Last update Thu Dec  1 22:20:11 2016 Antonin Rapini
+** Last update Fri Dec  2 10:35:08 2016 Antonin Rapini
 */
 
 #include <sys/types.h>
@@ -25,11 +25,10 @@ void		my_create_listelement
   if (element == NULL)
     exit(84);
   element->fileinfos = my_create_fileinfos(entry->d_name, path, options, 1);
-  if (element->fileinfos != NULL)
-    {
-      element->next = *list;
-      *list = element;
-    }
+  if (element->fileinfos == NULL)
+    exit(84);
+  element->next = *list;
+  *list = element;
 }
 
 void	set_previous(t_list *list)
