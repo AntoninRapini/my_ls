@@ -5,35 +5,23 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Oct 12 11:25:45 2016 Antonin Rapini
-** Last update Wed Nov 30 15:36:31 2016 Antonin Rapini
+** Last update Fri Dec  2 20:47:26 2016 Antonin Rapini
 */
 
-#include "utils.h"
 #include <stdarg.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include "utils.h"
 
-char	*my_nstrcat(int nbr, ...)
+char	*my_fill_string(char **arr, int size)
 {
-  va_list list;
-  int	i;
-  int	size;
-  char	**arr;
   char	*final;
+  int	i;
   int	j;
 
-  size = 0;
-  i = 0;
-  arr = malloc(sizeof(char *) * nbr);
-  va_start(list, nbr);
-  while (i++ < nbr)
-    {
-      arr[i - 1] = va_arg(list, char *);
-      size += my_strlen(arr[i - 1]);
-    }
-  i = 0;
-  final = malloc(sizeof(char) * (size + 1));
+  if ((final = malloc(sizeof(char) * (size + 1))) == NULL)
+    exit(84);
   final[size] = '\0';
+  i = 0;
   j = 0;
   while (j < size)
     {
@@ -45,6 +33,25 @@ char	*my_nstrcat(int nbr, ...)
 	}
       i++;
     }
-  //  my_putstr(final);
   return (final);
+}
+
+char	*my_nstrcat(int nbr, ...)
+{
+  va_list list;
+  int	i;
+  int	size;
+  char	**arr;
+
+  size = 0;
+  i = 0;
+  if ((arr = malloc(sizeof(char *) * nbr)) == NULL)
+    exit(84);
+  va_start(list, nbr);
+  while (i++ < nbr)
+    {
+      arr[i - 1] = va_arg(list, char *);
+      size += my_strlen(arr[i - 1]);
+    }
+  return (my_fill_string(arr, size));
 }

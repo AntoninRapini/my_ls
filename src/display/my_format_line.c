@@ -5,18 +5,18 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Dec  1 17:30:50 2016 Antonin Rapini
-** Last update Fri Dec  2 16:28:06 2016 Antonin Rapini
+** Last update Fri Dec  2 21:02:41 2016 Antonin Rapini
 */
 
-#include "my_options.h"
-#include "my_fileinfos.h"
-#include "utils.h"
 #include <time.h>
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include "my_options.h"
+#include "my_fileinfos.h"
+#include "utils.h"
 
 char my_get_filetype(mode_t st_mode)
 {
@@ -41,7 +41,8 @@ char	*my_format_rights(mode_t st_mode)
 {
   char	*rights;
 
-  rights = malloc(sizeof(char) * 11);
+  if ((rights = malloc(sizeof(char) * 11)) == NULL)
+    exit(84);
   rights[0] = my_get_filetype(st_mode);
   rights[1] = st_mode & S_IRUSR ? 'r' : '-';
   rights[2] = st_mode & S_IWUSR ? 'w' : '-';
@@ -72,7 +73,8 @@ char	*my_format_time(t_options *options, t_fileinfos *infos)
   i = 0;
   nonformatted = options->show_accesstime ? ctime(&(infos->stat_data->st_atime))
     : ctime(&(infos->stat_data->st_mtime));
-  formatted = malloc(sizeof(char) * 13);
+  if ((formatted = malloc(sizeof(char) * 13)) == NULL)
+    exit(84);
   formatted[12] = '\0';
   while (i < 12)
     {

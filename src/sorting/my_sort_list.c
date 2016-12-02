@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Oct 17 14:16:13 2016 Antonin Rapini
-** Last update Wed Nov 30 18:21:42 2016 Antonin Rapini
+** Last update Fri Dec  2 21:11:55 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -19,7 +19,6 @@ void		my_sort_list(t_list **begin, t_options *options)
 
   first = *begin;
   sorted = 0;
-  holder = NULL;
   while (sorted == 0)
     {
       sorted = 1;
@@ -36,6 +35,7 @@ void		my_sort_list(t_list **begin, t_options *options)
 	}
       (*begin) = first;
     }
-  if (options->reversed || (options->my_compfnc == my_nocmp && !options->reversed))
+  if (options->reversed ||
+      (options->my_compfnc == my_nocmp && !options->reversed))
     my_reverse_list(begin);
 }

@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Oct 17 09:13:41 2016 Antonin Rapini
-** Last update Sun Nov 27 19:02:51 2016 Antonin Rapini
+** Last update Fri Dec  2 20:49:49 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -16,8 +16,7 @@ t_list		*create_list_element(t_list **list, int data)
 {
   t_list	*element;
 
-  element = malloc(sizeof(t_list *));
-  if (element == NULL)
+  if ((element = malloc(sizeof(t_list *))) == NULL)
     exit(84);
   element->nbr = data;
   element->next = *list;

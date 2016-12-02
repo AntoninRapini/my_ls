@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 17:15:17 2016 Antonin Rapini
-** Last update Fri Dec  2 14:36:20 2016 Antonin Rapini
+** Last update Fri Dec  2 21:00:19 2016 Antonin Rapini
 */
 
 #include <sys/types.h>
@@ -21,7 +21,7 @@ void		my_create_listelement
 {
   t_list	*element;
 
-  if((element = malloc(sizeof(t_list *))) == NULL)
+  if ((element = malloc(sizeof(t_list *))) == NULL)
     exit(84);
   element->fileinfos = my_create_fileinfos(entry->d_name, path, options, 1);
   if (element->fileinfos != NULL)
@@ -50,7 +50,8 @@ t_list		*my_create_list(t_options *options, char *path)
   dir = opendir(path);
   if (dir == NULL || options->show_self == 1)
     {
-      list = malloc(sizeof(t_list *));
+      if ((list = malloc(sizeof(t_list *))) == NULL)
+	exit(84);
       list->fileinfos = my_create_fileinfos(path, path, options, 0);
       if (list != NULL)
 	list->next = NULL;

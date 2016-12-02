@@ -5,13 +5,13 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Fri Dec  2 10:39:44 2016 Antonin Rapini
-** Last update Fri Dec  2 11:24:42 2016 Antonin Rapini
+** Last update Fri Dec  2 20:47:59 2016 Antonin Rapini
 */
 
-#include "my_fileinfos.h"
-#include "my_list.h"
 #include <sys/stat.h>
 #include <stdlib.h>
+#include "my_fileinfos.h"
+#include "my_list.h"
 #include "utils.h"
 
 int	my_getblocks(t_list *list)

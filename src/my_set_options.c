@@ -5,13 +5,13 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 11:05:37 2016 Antonin Rapini
-** Last update Fri Dec  2 15:47:23 2016 Antonin Rapini
+** Last update Fri Dec  2 21:01:04 2016 Antonin Rapini
 */
 
+#include <stdlib.h>
 #include "my_options.h"
 #include "my_sorting.h"
 #include "my_fileinfos.h"
-#include <stdlib.h>
 
 void my_set_default_options(t_options *options)
 {
@@ -87,7 +87,8 @@ t_options	*my_set_options(int ac, char **av, int *i)
 {
   t_options	*options;
 
-  options = malloc(sizeof(t_options));
+  if ((options = malloc(sizeof(t_options))) == NULL)
+    exit(84);
   my_set_default_options(options);
   my_parse_options(options, ac, av, i);
   if (options->my_compfnc == &my_atimecmp

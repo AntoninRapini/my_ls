@@ -5,12 +5,12 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Nov 30 16:33:23 2016 Antonin Rapini
-** Last update Fri Dec  2 16:48:30 2016 Antonin Rapini
+** Last update Fri Dec  2 21:08:52 2016 Antonin Rapini
 */
 
+#include <stdlib.h>
 #include "my_options.h"
 #include "sources.h"
-#include <stdlib.h>
 #include "utils.h"
 
 void		my_display(t_options *options, int i, int ac, char **av)
@@ -21,12 +21,12 @@ void		my_display(t_options *options, int i, int ac, char **av)
 
   passes = 0;
   multiple = ac - i > 1 ? 1 : 0;
-  if (i == ac)
+  if (i == ac && ac++)
     {
-      av[i] = malloc(sizeof(char) * 2);
+      if ((av[i] = malloc(sizeof(char) * 2)) == NULL)
+	exit(84);
       av[i][0] = '.';
       av[i][1] = '\0';
-      ac++;
     }
   while (i++ < ac)
     if ((files = my_create_list(options, av[i - 1])) != NULL)

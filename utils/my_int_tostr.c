@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sun Nov 20 15:54:52 2016 Antonin Rapini
-** Last update Thu Dec  1 20:58:19 2016 Antonin Rapini
+** Last update Fri Dec  2 20:41:22 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -25,7 +25,8 @@ char	*my_int_tostr(int nbr)
       div *= 10;
       pass++;
     }
-  str = malloc(sizeof(char) * (pass + 1));
+  if ((str = malloc(sizeof(char) * (pass + 1))) == NULL)
+    exit(84);
   str[pass] = '\0';
   while (div >= 1)
     {

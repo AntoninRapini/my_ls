@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 22:29:12 2016 Antonin Rapini
-** Last update Fri Dec  2 16:32:08 2016 Antonin Rapini
+** Last update Fri Dec  2 21:02:57 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -14,7 +14,6 @@
 #include "my_options.h"
 #include "my_fileinfos.h"
 #include "utils.h"
-#include <time.h>
 #include "sources.h"
 
 void	my_display_default(t_options *options, t_list *list)

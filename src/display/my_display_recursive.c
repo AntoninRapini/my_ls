@@ -5,13 +5,13 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Fri Dec  2 10:57:53 2016 Antonin Rapini
-** Last update Fri Dec  2 14:08:57 2016 Antonin Rapini
+** Last update Fri Dec  2 21:05:33 2016 Antonin Rapini
 */
 
+#include <stdlib.h>
 #include "my_options.h"
 #include "my_list.h"
 #include "sources.h"
-#include <stdlib.h>
 #include "utils.h"
 
 void	my_display_recursive(t_options *options, t_list *files)

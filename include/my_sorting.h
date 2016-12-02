@@ -5,11 +5,11 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 12:02:12 2016 Antonin Rapini
-** Last update Wed Nov 30 19:06:33 2016 Antonin Rapini
+** Last update Fri Dec  2 20:40:22 2016 Antonin Rapini
 */
 
 #ifndef MY_SORTING_H_
-# define MY_SORTING_H
+# define MY_SORTING_H_
 
 #include "my_list.h"
 #include "my_fileinfos.h"

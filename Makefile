@@ -5,7 +5,7 @@
 ## Login   <antonin.rapini@epitech.net>
 ## 
 ## Started on  Tue Nov 29 08:50:17 2016 Antonin Rapini
-## Last update Fri Dec  2 15:14:28 2016 Antonin Rapini
+## Last update Fri Dec  2 20:39:20 2016 Antonin Rapini
 ##
 
 CFLAGS	+= -Wall -Werror -Wextra
@@ -52,5 +52,3 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
-
-my: $(NAME) clean
