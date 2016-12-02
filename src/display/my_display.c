@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Nov 30 16:33:23 2016 Antonin Rapini
-** Last update Fri Dec  2 15:29:32 2016 Antonin Rapini
+** Last update Fri Dec  2 15:59:52 2016 Antonin Rapini
 */
 
 #include "my_options.h"
@@ -31,7 +31,12 @@ void		my_display(t_options *options, int i, int ac, char **av)
       if ((files = my_create_list(options, av[i])) != NULL)
 	{
 	  if ((options->recursive || multiple) && !options->show_self)
-	    my_putstr(my_nstrcat(3, "\n", av[i], ":\n"));
+	    {
+	      if (files->fileinfos->is_dir)
+		my_putstr(my_nstrcat(3, "\n", av[i], ":\n"));
+	      else
+		my_putchar('\n');
+	    }
 	  options->my_display(options, files);
 	}
       i++;

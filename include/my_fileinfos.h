@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 09:30:11 2016 Antonin Rapini
-** Last update Fri Dec  2 15:03:33 2016 Antonin Rapini
+** Last update Fri Dec  2 15:45:18 2016 Antonin Rapini
 */
 
 #ifndef MY_FILEINFOS_H_
@@ -21,6 +21,7 @@ typedef struct	s_fileinfos
   struct stat	*stat_data;
   char		*links_to;
   char		*path;
+  int		is_dir;
   char		typespecifier;
 }		t_fileinfos;
 

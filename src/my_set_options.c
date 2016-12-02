@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 11:05:37 2016 Antonin Rapini
-** Last update Thu Dec  1 23:35:48 2016 Antonin Rapini
+** Last update Fri Dec  2 15:47:23 2016 Antonin Rapini
 */
 
 #include "my_options.h"
@@ -95,6 +95,11 @@ t_options	*my_set_options(int ac, char **av, int *i)
     {
       options->my_compfnc = &my_namecmp;
       options->show_accesstime = 1;
+    }
+  if (options->show_hidden)
+    {
+      options->my_display = &my_display_default;
+      options->my_compfnc = my_nocmp;
     }
   return (options);
 }

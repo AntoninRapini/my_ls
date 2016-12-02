@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 22:29:12 2016 Antonin Rapini
-** Last update Fri Dec  2 14:20:20 2016 Antonin Rapini
+** Last update Fri Dec  2 16:01:01 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -21,7 +21,7 @@ void	my_display_line(t_options *options, t_list *list)
   t_list *start;
 
   start = list;
-  if (!options->show_self)
+  if (!options->show_self && list->fileinfos->is_dir)
     my_showblocks(list);
   while (list != NULL)
     {
@@ -29,7 +29,7 @@ void	my_display_line(t_options *options, t_list *list)
 	  (list->fileinfos->name[0] != '.' || options->show_self))
 	{
 	  my_putstr(my_format_line(options, list->fileinfos));
-	  my_putchar('\n'); 
+	  my_putchar('\n');
 	}
       list = list->next;
     }
