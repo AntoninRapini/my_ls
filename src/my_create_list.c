@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 17:15:17 2016 Antonin Rapini
-** Last update Fri Dec  2 10:35:08 2016 Antonin Rapini
+** Last update Fri Dec  2 10:41:28 2016 Antonin Rapini
 */
 
 #include <sys/types.h>
@@ -21,8 +21,7 @@ void		my_create_listelement
 {
   t_list	*element;
 
-  element = malloc(sizeof(t_list *));
-  if (element == NULL)
+  if((element = malloc(sizeof(t_list *))) == NULL)
     exit(84);
   element->fileinfos = my_create_fileinfos(entry->d_name, path, options, 1);
   if (element->fileinfos == NULL)

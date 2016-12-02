@@ -5,12 +5,13 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Nov 30 16:33:23 2016 Antonin Rapini
-** Last update Fri Dec  2 10:33:08 2016 Antonin Rapini
+** Last update Fri Dec  2 12:45:09 2016 Antonin Rapini
 */
 
 #include "my_options.h"
 #include "sources.h"
 #include <stdlib.h>
+#include "utils.h"
 
 void		my_display(t_options *options, int i, int ac, char **av)
 {
@@ -21,9 +22,15 @@ void		my_display(t_options *options, int i, int ac, char **av)
       while (i < ac)
 	{
 	  if ((files = my_create_list(options, av[i])) != NULL)
-	  {
-	    options->my_display(options, files);
-	  }
+	    {
+	      if (options->recursive)
+		{
+		  my_putchar('\n');
+		  my_putstr(files->fileinfos->name);
+		  my_putstr(":\n");
+		}
+	      options->my_display(options, files);
+	    }
 	  i++;
 	}
     }
@@ -31,6 +38,11 @@ void		my_display(t_options *options, int i, int ac, char **av)
     {
       if ((files = my_create_list(options, ".")) != NULL)
 	{
+	  if (options->recursive)
+	    {
+	      my_putstr(files->fileinfos->name);
+	      my_putstr(":\n");
+	    }
 	  options->my_display(options, files);
 	}
     }

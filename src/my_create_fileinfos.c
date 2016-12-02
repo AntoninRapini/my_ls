@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 17:15:17 2016 Antonin Rapini
-** Last update Fri Dec  2 10:36:02 2016 Antonin Rapini
+** Last update Fri Dec  2 11:17:47 2016 Antonin Rapini
 */
 
 #include <sys/types.h>
@@ -50,6 +50,7 @@ struct stat	*my_get_stat
   if (is_dir)
     {
       filepath = my_nstrcat(3, path, "/", filename);
+      fileinfos->path = filepath;
       if (lstat(filepath, sb) != -1)
 	fileinfos->links_to = get_linkname(filepath, sb);
       else
@@ -57,7 +58,10 @@ struct stat	*my_get_stat
     }
   else
     if (lstat(path, sb) != -1)
-      fileinfos->links_to = get_linkname(path, sb);
+      {
+	fileinfos->path = path;
+	fileinfos->links_to = get_linkname(path, sb);
+      }
     else
       return (NULL);
   return (sb);

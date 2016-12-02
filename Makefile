@@ -5,7 +5,7 @@
 ## Login   <antonin.rapini@epitech.net>
 ## 
 ## Started on  Tue Nov 29 08:50:17 2016 Antonin Rapini
-## Last update Thu Dec  1 22:27:22 2016 Antonin Rapini
+## Last update Fri Dec  2 11:20:59 2016 Antonin Rapini
 ##
 
 CFLAGS	+= -Wall -Werror -Wextra
@@ -20,6 +20,7 @@ SRC	=	src/sorting/my_atimecmp.c	\
 		src/display/my_display_default.c	\
 		src/display/my_display_line.c	\
 		src/display/my_display.c	\
+		src/display/my_display_recursive.c	\
 		src/my_set_options.c	\
 		src/my_create_list.c	\
 		src/my_create_fileinfos.c	\
@@ -31,6 +32,7 @@ SRC	=	src/sorting/my_atimecmp.c	\
 		utils/my_put_nbr.c	\
 		utils/my_putchar.c	\
 		utils/my_int_tostr.c	\
+		utils/my_showblocks.c	\
 		my_ls.c
 
 OBJ	=	$(SRC:.c=.o)
