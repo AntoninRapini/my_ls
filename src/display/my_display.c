@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Nov 30 16:33:23 2016 Antonin Rapini
-** Last update Fri Dec  2 12:45:09 2016 Antonin Rapini
+** Last update Fri Dec  2 14:15:07 2016 Antonin Rapini
 */
 
 #include "my_options.h"
@@ -38,7 +38,7 @@ void		my_display(t_options *options, int i, int ac, char **av)
     {
       if ((files = my_create_list(options, ".")) != NULL)
 	{
-	  if (options->recursive)
+	  if (options->recursive && !options->show_self)
 	    {
 	      my_putstr(files->fileinfos->name);
 	      my_putstr(":\n");

@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 17:15:17 2016 Antonin Rapini
-** Last update Fri Dec  2 10:41:28 2016 Antonin Rapini
+** Last update Fri Dec  2 14:08:03 2016 Antonin Rapini
 */
 
 #include <sys/types.h>
@@ -51,7 +51,8 @@ t_list		*my_create_list(t_options *options, char *path)
     {
       list = malloc(sizeof(t_list *));
       list->fileinfos = my_create_fileinfos(path, path, options, 0);
-      list->next = NULL;
+      if (list != NULL)
+	list->next = NULL;
     }
   else
     {
@@ -59,7 +60,10 @@ t_list		*my_create_list(t_options *options, char *path)
       while ((entry = readdir(dir)) != NULL)
 	my_create_listelement(&list, entry, path, options);
     }
-  set_previous(list);
-  my_sort_list(&list, options);
+  if (list != NULL)
+    {
+      set_previous(list);
+      my_sort_list(&list, options);
+    }
   return (list);
 }

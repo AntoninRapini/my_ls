@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Fri Dec  2 10:57:53 2016 Antonin Rapini
-** Last update Fri Dec  2 12:03:38 2016 Antonin Rapini
+** Last update Fri Dec  2 14:08:57 2016 Antonin Rapini
 */
 
 #include "my_options.h"
@@ -17,16 +17,23 @@
 void	my_display_recursive(t_options *options, t_list *files)
 {
   t_list *list;
+  ino_t  start_inode;
 
+  start_inode = files->fileinfos->stat_data->st_ino;
   while (files != NULL)
     {
-      if (S_ISDIR(files->fileinfos->stat_data->st_mode) && files->fileinfos->name[0] != '.')
+      if (S_ISDIR(files->fileinfos->stat_data->st_mode)
+	  && files->fileinfos->stat_data->st_ino != start_inode)
 	{
-	  my_putchar('\n');
-	  my_putstr(files->fileinfos->path);
-	  my_putstr (":\n");
-	  list = my_create_list(options, files->fileinfos->path);
-	  options->my_display(options, list);
+	  if (files->fileinfos->name[0] != '.')
+	    {
+	      my_putchar('\n');
+	      my_putstr(files->fileinfos->path);
+	      my_putstr (":\n");
+	      list = my_create_list(options, files->fileinfos->path);
+	      if (list != NULL)
+		options->my_display(options, list);
+	    }
 	}
       files = files->next;
     }

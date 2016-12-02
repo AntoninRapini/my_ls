@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 22:29:12 2016 Antonin Rapini
-** Last update Thu Dec  1 22:45:16 2016 Antonin Rapini
+** Last update Fri Dec  2 14:19:18 2016 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -15,16 +15,23 @@
 #include "my_fileinfos.h"
 #include "utils.h"
 #include <time.h>
+#include "sources.h"
 
 void	my_display_default(t_options *options, t_list *list)
 {
+  t_list *start;
+
+  start = list;
   while (list != NULL)
     {
-      if (options->show_hidden || list->fileinfos->name[0] != '.')
+      if (options->show_hidden ||
+	  (list->fileinfos->name[0] != '.' || options->show_self))
 	{
 	  my_putstr(list->fileinfos->name);
 	  my_putchar('\n');
 	}
       list = list->next;
     }
+  if (options->recursive && !options->show_self)
+    my_display_recursive(options, start);
 }
