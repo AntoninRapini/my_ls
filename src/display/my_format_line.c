@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Dec  1 17:30:50 2016 Antonin Rapini
-** Last update Fri Dec  2 10:38:05 2016 Antonin Rapini
+** Last update Fri Dec  2 15:20:48 2016 Antonin Rapini
 */
 
 #include "my_options.h"
@@ -105,8 +105,9 @@ char	*my_format_line(t_options *options, t_fileinfos *infos)
   links = my_int_tostr(infos->stat_data->st_nlink);
   size = my_int_tostr(infos->stat_data->st_size);
   rights = my_format_rights(infos->stat_data->st_mode);
-  line = my_nstrcat(15, rights, " ", links, " ", infos->owner,
-		    " ", infos->group, " ", size, "\t", time, " ",infos->name,
+  line = my_nstrcat(16, rights, " ", links, " ", infos->owner,
+		    " ", infos->group, " ", size, "\t", time, " ", infos->name,
+		    infos->links_to != NULL ? "\0" : &infos->typespecifier,
 		    infos->links_to != NULL ? " -> " : "\0",
 		    infos->links_to != NULL ? infos->links_to : "\0");
   return (line);

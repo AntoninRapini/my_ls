@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 08:53:50 2016 Antonin Rapini
-** Last update Fri Dec  2 11:20:43 2016 Antonin Rapini
+** Last update Fri Dec  2 15:13:59 2016 Antonin Rapini
 */
 
 #ifndef SOURCES_H_
@@ -22,4 +22,5 @@ void		my_sort_list(t_list **, t_options *);
 t_fileinfos	*my_create_fileinfos(char *, char *, t_options *, int);
 char		*my_format_line(t_options *, t_fileinfos *);
 void		my_display_recursive(t_options *, t_list *);
+char		my_get_typespecifier(t_options *, mode_t);
 #endif /* !SOURCES_H_ */

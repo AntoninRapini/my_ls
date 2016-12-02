@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Nov 30 16:33:23 2016 Antonin Rapini
-** Last update Fri Dec  2 14:15:07 2016 Antonin Rapini
+** Last update Fri Dec  2 14:53:39 2016 Antonin Rapini
 */
 
 #include "my_options.h"
@@ -17,33 +17,21 @@ void		my_display(t_options *options, int i, int ac, char **av)
 {
   t_list	*files;
 
-  if (ac > 1 && i != ac)
+  if (i == ac)
     {
-      while (i < ac)
-	{
-	  if ((files = my_create_list(options, av[i])) != NULL)
-	    {
-	      if (options->recursive)
-		{
-		  my_putchar('\n');
-		  my_putstr(files->fileinfos->name);
-		  my_putstr(":\n");
-		}
-	      options->my_display(options, files);
-	    }
-	  i++;
-	}
+      av[i] = malloc(sizeof(char) * 2);
+      av[i][0] = '.';
+      av[i][1] = '\0';
+      ac++;
     }
-  else
+  while (i < ac)
     {
-      if ((files = my_create_list(options, ".")) != NULL)
+      if ((files = my_create_list(options, av[i])) != NULL)
 	{
 	  if (options->recursive && !options->show_self)
-	    {
-	      my_putstr(files->fileinfos->name);
-	      my_putstr(":\n");
-	    }
+	    my_putstr(my_nstrcat(3, "\n", files->fileinfos->name, ":\n"));
 	  options->my_display(options, files);
 	}
+      i++;
     }
 }

@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Tue Nov 29 17:15:17 2016 Antonin Rapini
-** Last update Fri Dec  2 11:17:47 2016 Antonin Rapini
+** Last update Fri Dec  2 15:15:57 2016 Antonin Rapini
 */
 
 #include <sys/types.h>
@@ -18,6 +18,7 @@
 #include "my_options.h"
 #include "utils.h"
 #include <fcntl.h>
+#include "sources.h"
 
 char	*get_linkname(char *path, struct stat *sb)
 {
@@ -28,7 +29,7 @@ char	*get_linkname(char *path, struct stat *sb)
   if (S_ISLNK(sb->st_mode))
     {
       buffer = malloc(sizeof(char) * 1024);
-      if((len = readlink(path, buffer, 1024 - 1)) != -1)
+      if ((len = readlink(path, buffer, 1024 - 1)) != -1)
 	buffer[len] = '\0';
       else
 	exit(84);
@@ -49,7 +50,8 @@ struct stat	*my_get_stat
     exit(84);
   if (is_dir)
     {
-      filepath = my_nstrcat(3, path, "/", filename);
+      filepath = my_nstrcat
+	(3, path, path[my_strlen(path) - 1] != '/' ? "/" : "\0", filename);
       fileinfos->path = filepath;
       if (lstat(filepath, sb) != -1)
 	fileinfos->links_to = get_linkname(filepath, sb);
@@ -80,9 +82,10 @@ t_fileinfos	*my_create_fileinfos
   if ((sb = my_get_stat(path, filename, is_dir, fileinfos)) == NULL)
     exit(84);
   if ((pwd = getpwuid(sb->st_uid)) == NULL)
-    exit(84);
+    return (NULL);
   if ((grp = getgrgid(sb->st_gid)) == NULL)
-    exit(84);
+    return (NULL);
+  fileinfos->typespecifier = my_get_typespecifier(optns, sb->st_mode);
   fileinfos->owner = optns->hide_owner ? "\0" : my_strdup(pwd->pw_name);
   fileinfos->group = my_strdup(grp->gr_name);
   fileinfos->stat_data = sb;
