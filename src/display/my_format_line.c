@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Dec  1 17:30:50 2016 Antonin Rapini
-** Last update Fri Dec  2 21:02:41 2016 Antonin Rapini
+** Last update Sun Dec  4 18:10:39 2016 Antonin Rapini
 */
 
 #include <time.h>
@@ -54,12 +54,11 @@ char	*my_format_rights(mode_t st_mode)
   rights[8] = st_mode & S_IWOTH ? 'w' : '-';
   rights[9] = st_mode & S_IXOTH ? 'x' : '-';
   if (st_mode & S_ISVTX)
-    {
-      if (rights[9] == 'x')
-	rights[9] = 't';
-      else
-	rights[9] = 'T';
-    }
+    rights[9] = rights[9] == 'x' ? 't' : 'T';
+  if (st_mode & S_ISUID)
+    rights[3] = rights[3] == 'x' ? 's' : 'S';
+  if (st_mode & S_ISGID)
+    rights[6] = rights[6] == 'x' ? 's' : 'S';
   rights[10] = '\0';
   return (rights);
 }
